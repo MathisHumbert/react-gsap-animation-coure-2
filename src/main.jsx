@@ -18,7 +18,7 @@ ${reset}
   }
   html, body {
     /* cursor: none; */
-    background: #e1dfdd
+    /* background: #e1dfdd */
   }
   * {
     min-height: 0;
