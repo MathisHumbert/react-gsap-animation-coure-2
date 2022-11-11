@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
   position: absolute;
   width: 100%;
-  z-index: 10;
   padding: 0 4vw;
 
   .header__outer {
@@ -28,6 +27,7 @@ const StyledHeader = styled.header`
   .header__hamburger {
     cursor: pointer;
     display: block;
+    z-index: 10;
 
     span {
       height: 3px;

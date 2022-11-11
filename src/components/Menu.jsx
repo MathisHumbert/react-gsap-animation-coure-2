@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 import MenuItems from './MenuItems';
@@ -23,7 +23,7 @@ const StyledProjectsContainer = styled.nav`
     pointer-events: none;
     position: absolute;
     width: 28vw;
-    height: 22vw;
+    height: 42vw;
     left: 50%;
     overflow: hidden;
     background-color: #000;
@@ -56,24 +56,33 @@ const StyledBackground = styled.aside`
 `;
 
 export default function Menu({ isMenuOpen }) {
+  const innerRef = useRef();
+  const outerRef = useRef();
+  const backgroundRef = useRef();
+  const projectsRef = useRef();
+
   return (
     <>
       {isMenuOpen && (
         <StyledProjectsContainer>
-          <div className='project__wrapper'>
+          <div className='project__wrapper' ref={projectsRef}>
             {projects.map((project) => (
               <MenuItems
                 key={project.id}
                 name={project.name}
                 bgcolor={project.color}
                 src={project.image}
+                innerRef={innerRef}
+                outerRef={outerRef}
+                backgroundRef={backgroundRef}
+                projectsRef={projectsRef}
               />
             ))}
           </div>
-          <div className='project__image--outer'>
-            <div className='project__image--inner'></div>
+          <div ref={outerRef} className='project__image--outer'>
+            <div ref={innerRef} className='project__image--inner'></div>
           </div>
-          <StyledBackground />
+          <StyledBackground ref={backgroundRef} />
         </StyledProjectsContainer>
       )}
     </>
